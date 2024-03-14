@@ -18,11 +18,13 @@ pub fn math1_test() {
   |> calculator.do_expr
   |> should.equal(0)
 }
+
 pub fn math2_test() {
   "2 * 2"
   |> calculator.do_expr
   |> should.equal(4)
 }
+
 pub fn math3_test() {
   "2 / 2"
   |> calculator.do_expr
@@ -34,26 +36,31 @@ pub fn complex_math1_test() {
   |> calculator.do_expr
   |> should.equal(4)
 }
+
 pub fn complex_math2_test() {
   "(2 + 2) + 1"
   |> calculator.do_expr
   |> should.equal(5)
 }
+
 pub fn complex_math3_test() {
   "1 + (2 + 2)"
   |> calculator.do_expr
   |> should.equal(5)
 }
+
 pub fn complex_math4_test() {
   "2 + 3 * 4"
   |> calculator.do_expr
   |> should.equal(14)
 }
+
 pub fn complex_math5_test() {
   "(2 + 3) * 4"
   |> calculator.do_expr
   |> should.equal(20)
 }
+
 pub fn complex_math6_test() {
   "2 + (3 - 4)"
   |> calculator.do_expr

@@ -198,7 +198,11 @@ fn parse(tokens: List(Token), ptr: Int) -> #(Expression, Int) {
 }
 
 /// (3 + 4) + 2
-fn parse_loop(tokens: List(Token), ptr: Int, lhs: Expression) -> #(Expression, Int){
+fn parse_loop(
+  tokens: List(Token),
+  ptr: Int,
+  lhs: Expression,
+) -> #(Expression, Int) {
   case list.length(tokens) > ptr {
     True -> {
       let #(lhs, ptr) = continue_parse(tokens, ptr, lhs)
@@ -213,7 +217,11 @@ fn parse_loop(tokens: List(Token), ptr: Int, lhs: Expression) -> #(Expression, I
 /// 2 + (3 + 4) ~ + (3 + 4) ~ + 4
 /// (3 + 4) * 2 ~ + 4) ~ * 2
 /// 1 + 2 * 3 ~ + 2 ~ * 3
-fn continue_parse(tokens: List(Token), ptr: Int, lhs: Expression) -> #(Expression, Int){
+fn continue_parse(
+  tokens: List(Token),
+  ptr: Int,
+  lhs: Expression,
+) -> #(Expression, Int) {
   let op = case list.at(tokens, ptr) {
     Ok(Operator(op)) -> op
     _ -> {
@@ -250,7 +258,7 @@ fn continue_parse(tokens: List(Token), ptr: Int, lhs: Expression) -> #(Expressio
     }
   }
   let ptr = case list.at(tokens, ptr) {
-    Ok(RPeren) -> ptr + 1 
+    Ok(RPeren) -> ptr + 1
     _ -> ptr
   }
   #(ret, ptr)
